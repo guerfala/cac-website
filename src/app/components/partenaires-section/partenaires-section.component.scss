@@ -1,0 +1,93 @@
+.partenaires {
+  padding: 120px 48px;
+  background: var(--black-light);
+  border-top: 1px solid rgba(239, 176, 31, 0.08);
+  overflow: hidden;
+}
+
+.partenaires-header {
+  text-align: center;
+  max-width: 1200px;
+  margin: 0 auto 64px;
+}
+
+.carousel-wrapper {
+  position: relative;
+  max-width: 1200px;
+  margin: 0 auto;
+  overflow: hidden;
+}
+
+.carousel-fade {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 120px;
+  z-index: 2;
+  pointer-events: none;
+  &--left { left: 0; background: linear-gradient(to right, var(--black-light), transparent); }
+  &--right { right: 0; background: linear-gradient(to left, var(--black-light), transparent); }
+}
+
+.carousel-track {
+  display: flex;
+  align-items: center;
+  gap: 48px;
+  width: max-content;
+  animation: marquee 30s linear infinite;
+  padding: 20px 0;
+  &:hover { animation-play-state: paused; }
+}
+
+@keyframes marquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+.carousel-slide { flex-shrink: 0; }
+
+.logo-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  padding: 32px 40px;
+  border: 1px solid rgba(239, 176, 31, 0.1);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.02);
+  min-width: 180px;
+  transition: all 0.4s ease;
+
+  img {
+    width: 80px;
+    height: 80px;
+    object-fit: contain;
+    opacity: 0.5;
+    transition: all 0.4s ease;
+  }
+
+  &:hover {
+    border-color: rgba(239, 176, 31, 0.3);
+    background: rgba(239, 176, 31, 0.04);
+    transform: translateY(-4px);
+    img { opacity: 1; }
+  }
+}
+
+.logo-name {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--gray-400);
+  text-align: center;
+  transition: color 0.4s ease;
+  .logo-card:hover & { color: var(--gold); }
+}
+
+@media (max-width: 768px) {
+  .partenaires { padding: 80px 24px; }
+  .carousel-fade { width: 60px; }
+  .carousel-track { gap: 24px; }
+  .logo-card { min-width: 140px; padding: 24px 28px; img { width: 60px; height: 60px; } }
+}

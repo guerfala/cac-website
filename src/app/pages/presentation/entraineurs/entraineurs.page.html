@@ -1,0 +1,46 @@
+<!-- ─── PAGE HERO ─── -->
+<section class="page-hero">
+  <div class="page-hero-bg"></div>
+  <div class="page-hero-content">
+    <span class="page-hero-label">Présentation</span>
+    <h1 class="page-hero-title">Nos<br>Entraîneurs</h1>
+    <p class="page-hero-subtitle">
+      Des entraîneurs diplômés et passionnés, au service de la progression de chaque athlète.
+    </p>
+  </div>
+</section>
+
+<!-- ─── ENTRAÎNEURS ─── -->
+<section class="staff-section">
+  <div class="container">
+    <div class="section-header" appReveal>
+      <span class="section-label">Encadrement technique</span>
+      <h2 class="section-title">L'équipe technique</h2>
+    </div>
+
+    <div class="staff-grid">
+      <div
+        class="staff-card"
+        *ngFor="let e of entraineurs; let i = index"
+        appReveal
+        [revealDelay]="i * 120"
+      >
+        <div class="staff-card-photo">
+          <div class="staff-card-initials">{{ getInitials(e.nom) }}</div>
+          <img
+            [src]="api.img(e.photo)"
+            [alt]="e.nom"
+            loading="lazy"
+            (error)="onImageError($event)"
+          />
+          <div class="staff-card-overlay"></div>
+        </div>
+        <div class="staff-card-info">
+          <h3 class="staff-card-name">{{ e.nom }}</h3>
+          <span class="staff-card-role">{{ e.specialite }}</span>
+          <div class="staff-card-line"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

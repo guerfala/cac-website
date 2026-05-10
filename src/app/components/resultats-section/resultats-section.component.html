@@ -1,0 +1,39 @@
+<section class="results">
+  <div class="results-header" appReveal>
+    <div>
+      <p class="section-label">Résultats & Médias</p>
+      <h2 class="section-title">Dernières<br>performances</h2>
+    </div>
+    <div class="results-actions">
+      <a routerLink="/resultats-medias/albums-photos" class="results-btn">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/>
+          <polyline points="21 15 16 10 5 21"/>
+        </svg>
+        Albums photos
+      </a>
+      <a [href]="resultatsUrl" target="_blank" rel="noopener noreferrer" class="results-btn results-btn--outline">
+        Résultats FFA
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+          <path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/>
+          <polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/>
+        </svg>
+      </a>
+    </div>
+  </div>
+
+  <div class="results-cards" *ngIf="highlights.length > 0">
+    <div class="result-card" *ngFor="let item of highlights; let i = index" appReveal [revealDelay]="i * 120">
+      <img [src]="api.img(item.image)" [alt]="item.tag" loading="lazy" />
+      <div class="result-card-overlay">
+        <span class="result-card-tag">{{ item.tag }}</span>
+        <h3 class="result-card-title">{{ item.titre }}</h3>
+        <span class="result-card-date">{{ item.date }}</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="results-empty" *ngIf="highlights.length === 0" appReveal>
+    <p>Aucune actualité publiée pour le moment.</p>
+  </div>
+</section>

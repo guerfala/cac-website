@@ -1,0 +1,68 @@
+.page-hero {
+  position: relative; height: 55vh; min-height: 500px; margin-top: -80px;
+  display: flex; align-items: center; justify-content: center; overflow: hidden;
+}
+.page-hero-bg {
+  position: absolute; inset: 0;
+  background: linear-gradient(180deg, rgba(10,10,10,0.5) 0%, rgba(10,10,10,0.85) 100%),
+    url('https://images.unsplash.com/photo-1504450758481-7338bbe47a18?w=1920&q=80') center/cover no-repeat;
+}
+.page-hero-content { position: relative; z-index: 2; text-align: center; padding: 100px 24px 40px; }
+.page-hero-label {
+  display: inline-block; font-size: 11px; font-weight: 600; letter-spacing: 5px;
+  text-transform: uppercase; color: var(--gold); margin-bottom: 20px;
+  opacity: 0; animation: fadeUp 0.8s ease 0.2s forwards;
+}
+.page-hero-title {
+  font-family: 'Bebas Neue', sans-serif; font-size: clamp(48px, 10vw, 110px);
+  letter-spacing: 4px; line-height: 0.95; color: var(--white);
+  opacity: 0; animation: fadeUp 0.8s ease 0.4s forwards;
+}
+.container { max-width: 1000px; margin: 0 auto; }
+.section-header { margin-bottom: 56px; }
+.horaires { padding: 100px 48px; background: var(--black); border-top: 1px solid rgba(239,176,31,0.08); }
+.categories-list { display: flex; flex-direction: column; }
+.category-card {
+  display: grid; grid-template-columns: 320px 1fr; gap: 32px;
+  padding: 32px 0; border-bottom: 1px solid rgba(239,176,31,0.06); align-items: start;
+  &:first-child { border-top: 1px solid rgba(239,176,31,0.06); }
+}
+.category-header { display: flex; align-items: baseline; gap: 16px; }
+.category-index { font-family: 'Bebas Neue', sans-serif; font-size: 18px; color: var(--gold); min-width: 28px; }
+.category-name { font-family: 'Bebas Neue', sans-serif; font-size: 24px; letter-spacing: 1px; color: var(--white); }
+.category-horaires { display: flex; flex-direction: column; gap: 12px; padding-top: 4px; }
+.horaire-item { display: flex; align-items: flex-start; gap: 12px; }
+.horaire-dot { width: 5px; height: 5px; border-radius: 50%; background: var(--gold); margin-top: 8px; flex-shrink: 0; }
+.horaire-text { font-size: 14px; line-height: 1.6; color: var(--gray-300); }
+.tarifs { padding: 100px 48px; background: var(--gray-600); border-top: 1px solid rgba(239,176,31,0.08); }
+.tarifs-table-wrapper { overflow-x: auto; border-radius: 8px; border: 1px solid rgba(239,176,31,0.1); }
+.tarifs-table {
+  width: 100%; border-collapse: collapse; font-size: 14px;
+  th {
+    text-align: left; padding: 20px 24px; font-size: 11px; font-weight: 600;
+    letter-spacing: 2px; text-transform: uppercase; color: var(--gold);
+    background: rgba(239,176,31,0.05); border-bottom: 1px solid rgba(239,176,31,0.1);
+    &:not(.th-categorie) { text-align: right; min-width: 110px; }
+  }
+  td {
+    padding: 18px 24px; color: var(--gray-300); border-bottom: 1px solid rgba(255,255,255,0.04); text-align: right;
+    &.td-categorie { text-align: left; font-weight: 500; color: var(--white); }
+    &.td-total { font-family: 'Bebas Neue', sans-serif; font-size: 22px; letter-spacing: 1px; color: var(--gold); }
+  }
+  .row-alt { background: rgba(239,176,31,0.02); }
+  tr { transition: background 0.2s ease; &:hover { background: rgba(239,176,31,0.04); } }
+}
+.tarifs-note {
+  display: flex; align-items: center; gap: 16px; margin-top: 32px;
+  padding: 20px 24px; background: rgba(189,17,32,0.08); border-radius: 8px;
+  border-left: 3px solid var(--red);
+  svg { width: 20px; height: 20px; flex-shrink: 0; color: var(--red); }
+  p { font-size: 14px; color: var(--gray-300); line-height: 1.5;
+    strong { color: var(--gold); }
+  }
+}
+@media (max-width: 768px) {
+  .horaires, .tarifs { padding: 80px 24px; }
+  .category-card { grid-template-columns: 1fr; gap: 16px; }
+  .tarifs-table { font-size: 13px; th, td { padding: 14px 16px; } }
+}

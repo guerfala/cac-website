@@ -1,0 +1,28 @@
+<section class="partenaires">
+  <div class="partenaires-header" appReveal>
+    <p class="section-label">Ils nous soutiennent</p>
+    <h2 class="section-title">Nos Partenaires</h2>
+  </div>
+
+  <div class="carousel-wrapper" appReveal [revealDelay]="200">
+    <div class="carousel-fade carousel-fade--left"></div>
+    <div class="carousel-fade carousel-fade--right"></div>
+
+    <div class="carousel-track">
+      <!-- Premier jeu de logos -->
+      <div class="carousel-slide" *ngFor="let p of partenaires">
+        <div class="logo-card">
+          <img [src]="p.logo" [alt]="p.nom" />
+          <span class="logo-name">{{ p.nom }}</span>
+        </div>
+      </div>
+      <!-- Duplication pour boucle infinie -->
+      <div class="carousel-slide" *ngFor="let p of partenaires">
+        <div class="logo-card">
+          <img [src]="p.logo" [alt]="p.nom" />
+          <span class="logo-name">{{ p.nom }}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

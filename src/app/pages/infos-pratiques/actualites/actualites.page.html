@@ -1,0 +1,37 @@
+<!-- ─── PAGE HERO ─── -->
+<section class="page-hero">
+  <div class="page-hero-bg"></div>
+  <div class="page-hero-content">
+    <span class="page-hero-label">Infos pratiques</span>
+    <h1 class="page-hero-title">Actualités</h1>
+  </div>
+</section>
+
+<!-- ─── ACTUALITÉS ─── -->
+<section class="actus-section">
+  <div class="container">
+    <div
+      class="actu-card"
+      *ngFor="let actu of actualites; let i = index; let first = first"
+      [class.actu-card--featured]="first"
+      appReveal
+      [revealDelay]="i * 100"
+    >
+      <div class="actu-card-image">
+        <img [src]="api.img(actu.image)" [alt]="actu.titre" loading="lazy" />
+        <div class="actu-card-tag">{{ actu.tag }}</div>
+      </div>
+      <div class="actu-card-body">
+        <span class="actu-card-date">{{ actu.date }}</span>
+        <h3 class="actu-card-title">{{ actu.titre }}</h3>
+        <p class="actu-card-extrait">{{ actu.extrait }}</p>
+        <span class="actu-card-link">
+          Lire la suite
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M5 12h14M12 5l7 7-7 7"/>
+          </svg>
+        </span>
+      </div>
+    </div>
+  </div>
+</section>

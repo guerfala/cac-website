@@ -1,0 +1,60 @@
+<nav class="navbar" [class.scrolled]="isScrolled">
+  <a routerLink="/" class="nav-logo" (click)="closeAll()">
+    <img src="logo-cac.png" alt="CAC Logo" class="nav-logo-img" />
+  </a>
+
+  <div class="nav-links" [class.open]="isMobileMenuOpen">
+    <ng-container *ngFor="let link of navLinks">
+      <a
+        *ngIf="!link.children"
+        [routerLink]="link.route"
+        routerLinkActive="active"
+        [routerLinkActiveOptions]="{ exact: link.route === '/' }"
+        class="nav-link"
+        (click)="closeAll()"
+      >{{ link.label }}</a>
+
+      <div *ngIf="link.children" class="nav-item--dropdown">
+        <button
+          class="nav-link nav-link--dropdown"
+          [class.active]="openDropdown === link.label"
+          (click)="toggleDropdown(link.label, $event)"
+        >
+          {{ link.label }}
+          <svg class="chevron" [class.open]="openDropdown === link.label" viewBox="0 0 24 24"
+               fill="none" stroke="currentColor" stroke-width="2.5"
+               stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="6 9 12 15 18 9"/>
+          </svg>
+        </button>
+        <div class="dropdown" [class.open]="openDropdown === link.label">
+          <ng-container *ngFor="let child of link.children">
+            <a *ngIf="child.route" [routerLink]="child.route" routerLinkActive="active"
+               class="dropdown-link" (click)="closeAll()">
+              <span class="dropdown-link-dot"></span>
+              {{ child.label }}
+            </a>
+            <a *ngIf="child.externalUrl" [href]="child.externalUrl" target="_blank"
+               rel="noopener noreferrer" class="dropdown-link" (click)="closeAll()">
+              <span class="dropdown-link-dot"></span>
+              {{ child.label }}
+              <svg class="external-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                   stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/>
+                <polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/>
+              </svg>
+            </a>
+          </ng-container>
+        </div>
+      </div>
+    </ng-container>
+  </div>
+
+  <a routerLink="/contact" class="nav-contact" (click)="closeAll()">Contact</a>
+
+  <div class="nav-burger" (click)="toggleMobileMenu()">
+    <span [class.open]="isMobileMenuOpen"></span>
+    <span [class.open]="isMobileMenuOpen"></span>
+    <span [class.open]="isMobileMenuOpen"></span>
+  </div>
+</nav>

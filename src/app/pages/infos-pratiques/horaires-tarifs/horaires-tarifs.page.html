@@ -1,0 +1,82 @@
+<!-- ─── PAGE HERO ─── -->
+<section class="page-hero">
+  <div class="page-hero-bg"></div>
+  <div class="page-hero-content">
+    <span class="page-hero-label">Infos pratiques</span>
+    <h1 class="page-hero-title">Horaires<br>& Tarifs</h1>
+  </div>
+</section>
+
+<!-- ─── HORAIRES ─── -->
+<section class="horaires">
+  <div class="container">
+    <div class="section-header" appReveal>
+      <span class="section-label">Planning</span>
+      <h2 class="section-title">Horaires par catégorie</h2>
+      <p class="section-desc">
+        Tous les entraînements ont lieu à l'espace Jean Pierre Rives, sauf mention contraire.
+      </p>
+    </div>
+
+    <div class="categories-list">
+      <div
+        class="category-card"
+        *ngFor="let cat of categories; let i = index"
+        appReveal
+        [revealDelay]="i * 60"
+      >
+        <div class="category-header">
+          <span class="category-index">{{ (i + 1).toString().padStart(2, '0') }}</span>
+          <h3 class="category-name">{{ cat.nom }}</h3>
+        </div>
+        <div class="category-horaires">
+          <div class="horaire-item" *ngFor="let h of cat.horaires">
+            <span class="horaire-dot"></span>
+            <p class="horaire-text">{{ h }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── TARIFS ─── -->
+<section class="tarifs">
+  <div class="container">
+    <div class="section-header" appReveal>
+      <span class="section-label">Cotisations</span>
+      <h2 class="section-title" style="color: var(--black)">Tarifs</h2>
+    </div>
+
+    <div class="tarifs-table-wrapper" appReveal [revealDelay]="150">
+      <table class="tarifs-table">
+        <thead>
+          <tr>
+            <th class="th-categorie">Catégorie</th>
+            <th>Cotisation</th>
+            <th>Licence</th>
+            <th>Total</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let t of tarifs; let odd = odd" [class.row-alt]="odd">
+            <td class="td-categorie">{{ t.categorie }}</td>
+            <td>{{ t.cotisation }}</td>
+            <td>{{ t.licence }}</td>
+            <td class="td-total">{{ t.total }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="tarifs-note" appReveal [revealDelay]="250">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/>
+        <line x1="12" y1="16" x2="12.01" y2="16"/>
+      </svg>
+      <p>
+        Une plus-value de <strong>20 €</strong> est demandée pour les non résidents à Courbevoie.
+      </p>
+    </div>
+  </div>
+</section>

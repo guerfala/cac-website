@@ -1,0 +1,38 @@
+<section class="presentation">
+  <div class="pres-grid">
+    <div appReveal>
+      <p class="section-label">Présentation</p>
+      <h2 class="section-title">L'excellence<br>par la passion</h2>
+      <p class="section-desc">
+        Depuis sa création, le Club Athlétisme Courbevoie forme et accompagne des athlètes de
+        tous niveaux. Notre mission : rendre l'athlétisme accessible à tous,
+        dans un esprit de compétition et de convivialité.
+      </p>
+      <div class="pres-stats">
+        <div class="stat" *ngFor="let stat of stats">
+          <div class="stat-number">{{ stat.number }}</div>
+          <div class="stat-label">{{ stat.label }}</div>
+        </div>
+      </div>
+      <div class="pres-links">
+        <a routerLink="/presentation/dirigeants" class="pres-cta">
+          Nos Dirigeants
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+        <a routerLink="/presentation/entraineurs" class="pres-cta pres-cta--outline">
+          Nos Entraîneurs
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+      </div>
+    </div>
+
+    <div class="pres-image" appReveal [revealDelay]="200">
+      <img
+        src="https://images.unsplash.com/photo-1552674605-db6ffd4facb5?w=800&q=80"
+        alt="Athlète en action"
+        loading="lazy"
+      />
+      <div class="pres-image-overlay"></div>
+    </div>
+  </div>
+</section>

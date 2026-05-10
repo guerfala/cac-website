@@ -1,0 +1,45 @@
+<!-- ─── PAGE HERO ─── -->
+<section class="page-hero">
+  <div class="page-hero-bg"></div>
+  <div class="page-hero-content">
+    <span class="page-hero-label">Présentation</span>
+    <h1 class="page-hero-title">Nos<br>Dirigeants</h1>
+    <p class="page-hero-subtitle">
+      L'équipe bénévole qui porte la vision et assure le bon fonctionnement du club au quotidien.
+    </p>
+  </div>
+</section>
+
+<!-- ─── DIRIGEANTS ─── -->
+<section class="staff-section">
+  <div class="container">
+    <div class="section-header" appReveal>
+      <span class="section-label">Bureau directeur</span>
+      <h2 class="section-title">L'équipe dirigeante</h2>
+    </div>
+
+    <div class="staff-grid">
+      <div
+        class="staff-card"
+        *ngFor="let d of dirigeants; let i = index"
+        appReveal
+        [revealDelay]="i * 120"
+      >
+        <div class="staff-card-photo">
+          <div class="staff-card-initials">{{ getInitials(d.nom) }}</div>
+          <img
+            [src]="api.img(d.photo)"
+            [alt]="d.nom"
+            loading="lazy"
+            (error)="onImageError($event)"
+          />
+          <div class="staff-card-overlay"></div>
+        </div>
+        <div class="staff-card-info">
+          <h3 class="staff-card-name">{{ d.nom }}</h3>
+          <span class="staff-card-role">{{ d.role }}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

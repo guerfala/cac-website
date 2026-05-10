@@ -1,0 +1,65 @@
+.page-hero {
+  position: relative; height: 55vh; min-height: 500px; margin-top: -80px;
+  display: flex; align-items: center; justify-content: center; overflow: hidden;
+}
+.page-hero-bg {
+  position: absolute; inset: 0;
+  background: linear-gradient(180deg, rgba(10,10,10,0.5) 0%, rgba(10,10,10,0.85) 100%),
+    url('https://images.unsplash.com/photo-1506784983877-45594efa4cbe?w=1920&q=80') center/cover no-repeat;
+}
+.page-hero-content { position: relative; z-index: 2; text-align: center; padding: 100px 24px 40px; }
+.page-hero-label {
+  display: inline-block; font-size: 11px; font-weight: 600; letter-spacing: 5px;
+  text-transform: uppercase; color: var(--gold); margin-bottom: 20px;
+  opacity: 0; animation: fadeUp 0.8s ease 0.2s forwards;
+}
+.page-hero-title {
+  font-family: 'Bebas Neue', sans-serif; font-size: clamp(48px, 10vw, 110px);
+  letter-spacing: 4px; line-height: 0.95; color: var(--white);
+  opacity: 0; animation: fadeUp 0.8s ease 0.4s forwards;
+}
+.container { max-width: 900px; margin: 0 auto; }
+.section-header { margin-bottom: 64px; }
+.conges-section { padding: 100px 48px 120px; background: var(--black); border-top: 1px solid rgba(239,176,31,0.08); }
+.timeline { position: relative; padding: 20px 0; }
+.timeline-line {
+  position: absolute; left: 50%; top: 0; bottom: 0; width: 1px;
+  background: rgba(239,176,31,0.12); transform: translateX(-50%);
+}
+.timeline-item {
+  position: relative; display: flex; justify-content: flex-end;
+  padding-right: calc(50% + 48px); margin-bottom: 48px;
+  &--right { justify-content: flex-start; padding-right: 0; padding-left: calc(50% + 48px); }
+}
+.timeline-dot {
+  position: absolute; left: 50%; top: 16px; transform: translateX(-50%);
+  width: 44px; height: 44px; border-radius: 50%;
+  background: var(--gray-600); border: 1px solid rgba(239,176,31,0.15);
+  display: flex; align-items: center; justify-content: center; z-index: 2;
+  transition: all 0.3s ease;
+  svg { width: 18px; height: 18px; color: var(--gold); }
+}
+.timeline-item:hover .timeline-dot {
+  background: var(--gold); border-color: var(--gold);
+  svg { color: var(--black); }
+}
+.timeline-card {
+  background: var(--gray-600); border: 1px solid rgba(239,176,31,0.08);
+  border-radius: 8px; padding: 28px 32px; min-width: 280px; transition: all 0.3s ease;
+  &:hover { border-color: rgba(239,176,31,0.2); transform: translateY(-2px); }
+}
+.timeline-card-title { font-family: 'Bebas Neue', sans-serif; font-size: 22px; letter-spacing: 1px; color: var(--white); margin-bottom: 16px; }
+.timeline-card-dates { display: flex; align-items: center; gap: 16px; }
+.date-block { display: flex; flex-direction: column; gap: 2px; }
+.date-label { font-size: 10px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; color: var(--gold); }
+.date-value { font-size: 15px; font-weight: 500; color: var(--gray-200); }
+.date-separator { font-size: 16px; color: var(--gold); margin-top: 12px; }
+@media (max-width: 768px) {
+  .conges-section { padding: 80px 24px; }
+  .timeline-line { left: 22px; }
+  .timeline-item, .timeline-item--right { padding-left: 72px; padding-right: 0; justify-content: flex-start; }
+  .timeline-dot { left: 22px; width: 36px; height: 36px; svg { width: 15px; height: 15px; } }
+  .timeline-card { min-width: auto; padding: 20px 24px; }
+  .timeline-card-dates { flex-direction: column; gap: 8px; align-items: flex-start; }
+  .date-separator { display: none; }
+}

@@ -1,0 +1,117 @@
+<!-- ─── PAGE HERO ─── -->
+<section class="page-hero">
+  <div class="page-hero-bg"></div>
+  <div class="page-hero-content">
+    <span class="page-hero-label">Nous contacter</span>
+    <h1 class="page-hero-title">Contact</h1>
+  </div>
+</section>
+
+<!-- ─── FORMULAIRE ─── -->
+<section class="contact-section">
+  <div class="container">
+    <div class="contact-grid">
+
+      <!-- Formulaire -->
+      <div class="contact-form-wrapper" appReveal>
+        <h2 class="form-title">Formulaire de contact</h2>
+
+        <!-- Success -->
+        <div class="msg msg--success" *ngIf="success">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M22 11.08V12a10 10 0 11-5.93-9.14"/>
+            <polyline points="22 4 12 14.01 9 11.01"/>
+          </svg>
+          Votre message a été envoyé avec succès. Nous vous répondrons dans les plus brefs délais.
+        </div>
+
+        <!-- Error -->
+        <div class="msg msg--error" *ngIf="error">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/>
+            <line x1="9" y1="9" x2="15" y2="15"/>
+          </svg>
+          {{ error }}
+        </div>
+
+        <div class="form-row" *ngIf="!success">
+          <div class="form-group">
+            <label>Votre nom <span class="required">(obligatoire)</span></label>
+            <input type="text" [(ngModel)]="form.nom" placeholder="Dupont" />
+          </div>
+          <div class="form-group">
+            <label>Votre prénom <span class="required">(obligatoire)</span></label>
+            <input type="text" [(ngModel)]="form.prenom" placeholder="Jean" />
+          </div>
+        </div>
+
+        <div class="form-group" *ngIf="!success">
+          <label>Votre adresse mail <span class="required">(obligatoire)</span></label>
+          <input type="email" [(ngModel)]="form.email" placeholder="jean.dupont@email.com" />
+        </div>
+
+        <div class="form-group" *ngIf="!success">
+          <label>Objet</label>
+          <input type="text" [(ngModel)]="form.objet" placeholder="Demande d'informations" />
+        </div>
+
+        <div class="form-group" *ngIf="!success">
+          <label>Votre message <span class="required">(obligatoire)</span></label>
+          <textarea [(ngModel)]="form.message" rows="6" placeholder="Écrivez votre message ici..."></textarea>
+        </div>
+
+        <button class="btn-send" (click)="send()" [disabled]="loading" *ngIf="!success">
+          <span *ngIf="!loading">Envoyer</span>
+          <span *ngIf="loading">Envoi en cours...</span>
+          <svg *ngIf="!loading" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <line x1="22" y1="2" x2="11" y2="13"/>
+            <polygon points="22 2 15 22 11 13 2 9 22 2"/>
+          </svg>
+        </button>
+
+        <button class="btn-new" *ngIf="success" (click)="success = false">
+          Envoyer un autre message
+        </button>
+      </div>
+
+      <!-- Infos -->
+      <div class="contact-info" appReveal [revealDelay]="200">
+        <div class="info-card">
+          <div class="info-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/>
+              <circle cx="12" cy="9" r="2.5"/>
+            </svg>
+          </div>
+          <h3 class="info-title">Adresse</h3>
+          <p class="info-text">Espace Jean Pierre Rives<br>Courbevoie</p>
+        </div>
+
+        <div class="info-card">
+          <div class="info-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <rect x="2" y="4" width="20" height="16" rx="2"/>
+              <polyline points="22 4 12 13 2 4"/>
+            </svg>
+          </div>
+          <h3 class="info-title">Email</h3>
+          <p class="info-text">
+            <a href="mailto:contact@courbevoie-athletisme.fr">contact&#64;courbevoie-athletisme.fr</a>
+          </p>
+        </div>
+
+        <div class="info-card">
+          <div class="info-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/>
+            </svg>
+          </div>
+          <h3 class="info-title">Téléphone</h3>
+          <p class="info-text">
+            <a href="tel:0149979021">01 49 97 90 21</a>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

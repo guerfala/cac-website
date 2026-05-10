@@ -1,0 +1,29 @@
+<section class="links">
+  <div appReveal style="max-width: 800px; margin: 0 auto;">
+    <p class="section-label">Liens utiles</p>
+    <h2 class="section-title">Ressources</h2>
+  </div>
+
+  <div class="links-list">
+    <a
+      *ngFor="let lien of liens; let i = index"
+      [href]="lien.url"
+      class="link-item"
+      appReveal
+      [revealDelay]="i * 80"
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      <div class="link-item-info">
+        <span class="link-item-num">{{ lien.num }}</span>
+        <div>
+          <div class="link-item-name">{{ lien.name }}</div>
+          <div class="link-item-desc">{{ lien.desc }}</div>
+        </div>
+      </div>
+      <svg class="link-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M5 12h14M12 5l7 7-7 7"/>
+      </svg>
+    </a>
+  </div>
+</section>

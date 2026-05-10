@@ -1,0 +1,47 @@
+<footer class="footer" id="contact">
+  <div class="footer-grid">
+    <div>
+      <div class="footer-brand-name">Club Athlétisme Courbevoie</div>
+      <p class="footer-brand-desc">
+        Club d'athlétisme de Courbevoie dédié à la performance et au
+        développement de chaque athlète, quel que soit son niveau.
+      </p>
+      <div class="footer-socials">
+        <a
+          *ngFor="let social of socials"
+          [href]="social.url"
+          class="footer-social"
+          [attr.aria-label]="social.name"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <svg viewBox="0 0 24 24" fill="currentColor">
+            <path [attr.d]="social.icon"/>
+          </svg>
+        </a>
+      </div>
+    </div>
+
+    <div class="footer-col">
+      <div class="footer-col-title">Navigation</div>
+      <a *ngFor="let item of navigation" [routerLink]="item.route">{{ item.label }}</a>
+    </div>
+
+    <div class="footer-col">
+      <div class="footer-col-title">Liens utiles</div>
+      <a *ngFor="let item of liens" [href]="item.url" target="_blank" rel="noopener noreferrer">
+        {{ item.label }}
+      </a>
+    </div>
+
+    <div class="footer-col">
+      <div class="footer-col-title">Contact</div>
+      <a *ngFor="let item of contact" [href]="item.url">{{ item.label }}</a>
+    </div>
+  </div>
+
+  <div class="footer-bottom">
+    <span class="footer-copy">© {{ currentYear }} Club Athlétisme Courbevoie — Tous droits réservés</span>
+    <span class="footer-copy">Mentions légales</span>
+  </div>
+</footer>

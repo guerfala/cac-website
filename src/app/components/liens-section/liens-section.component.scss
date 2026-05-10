@@ -1,0 +1,47 @@
+.links {
+  padding: 120px 48px;
+  background: var(--black);
+  border-top: 1px solid rgba(239, 176, 31, 0.08);
+}
+
+.links-list { max-width: 800px; margin: 64px auto 0; }
+
+.link-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 28px 0;
+  border-bottom: 1px solid rgba(239, 176, 31, 0.08);
+  text-decoration: none;
+  color: var(--white);
+  transition: all 0.3s ease;
+
+  &:hover {
+    padding-left: 16px;
+    .link-item-num { color: var(--gold); }
+    .link-arrow { transform: translateX(6px); opacity: 1; color: var(--gold); }
+  }
+}
+
+.link-item-info { display: flex; align-items: center; gap: 20px; }
+
+.link-item-num {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 20px;
+  color: var(--gray-500);
+  min-width: 32px;
+  transition: color 0.3s ease;
+}
+
+.link-item-name { font-size: 16px; font-weight: 500; }
+.link-item-desc { font-size: 12px; color: var(--gray-400); margin-top: 2px; }
+
+.link-arrow {
+  width: 20px;
+  height: 20px;
+  color: var(--gray-400);
+  opacity: 0.4;
+  transition: all 0.3s ease;
+}
+
+@media (max-width: 768px) { .links { padding: 80px 24px; } }
