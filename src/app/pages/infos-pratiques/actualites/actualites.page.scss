@@ -31,7 +31,7 @@
     .actu-card-image img { transform: scale(1.04); }
     .actu-card-link svg { transform: translateX(4px); }
   }
-  .actu-card-image { aspect-ratio: 16/10; height: 100%; }
+  .actu-card-image { aspect-ratio: 16/10; height: 300px; }
   .actu-card-body { padding: 48px 40px; display: flex; flex-direction: column; justify-content: center; background: var(--gray-600); }
   .actu-card-title { font-size: 30px; }
 }
@@ -45,8 +45,8 @@
   }
 }
 .actu-card-image {
-  position: relative; overflow: hidden;
-  img { width: 100%; height: 100%; object-fit: cover; transition: all 0.5s ease; }
+  position: relative; overflow: hidden; height: 250px;
+  img { width: 100%; height: 100%; object-fit: cover; object-fit: cover; transition: all 0.5s ease; }
 }
 .actu-card-tag {
   position: absolute; top: 16px; left: 16px; font-size: 10px; font-weight: 600;
