@@ -85,10 +85,6 @@ import { ApiService } from '../../../services/api.service';
       padding-bottom: 32px; border-bottom: 1px solid rgba(239,176,31,0.1);
     }
 
-    .article-body p {
-      font-size: 16px; line-height: 1.9; color: var(--gray-300); margin-bottom: 20px;
-    }
-
     .article-body {
       ::ng-deep {
         p {
