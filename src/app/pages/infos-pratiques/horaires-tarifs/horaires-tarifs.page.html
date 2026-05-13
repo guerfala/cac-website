@@ -11,7 +11,7 @@
 <section class="horaires">
   <div class="container">
     <div class="section-header" appReveal>
-      <span class="section-label">Planning</span>
+      <span class="section-label">Saison {{ saison }}</span>
       <h2 class="section-title">Horaires par catégorie</h2>
       <p class="section-desc">
         Tous les entraînements ont lieu à l'espace Jean Pierre Rives, sauf mention contraire.
@@ -30,13 +30,17 @@
           <h3 class="category-name">{{ cat.nom }}</h3>
         </div>
         <div class="category-horaires">
-          <div class="horaire-item" *ngFor="let h of cat.horaires">
+          <div class="horaire-item" *ngFor="let h of getHoraires(cat.horaires)">
             <span class="horaire-dot"></span>
             <p class="horaire-text">{{ h }}</p>
           </div>
         </div>
       </div>
     </div>
+
+    <p *ngIf="categories.length === 0" appReveal style="text-align:center;color:var(--gray-400);padding:60px;">
+      Les horaires seront bientôt disponibles.
+    </p>
   </div>
 </section>
 
@@ -48,7 +52,7 @@
       <h2 class="section-title" style="color: var(--black)">Tarifs</h2>
     </div>
 
-    <div class="tarifs-table-wrapper" appReveal [revealDelay]="150">
+    <div class="tarifs-table-wrapper" appReveal [revealDelay]="150" *ngIf="tarifs.length > 0">
       <table class="tarifs-table">
         <thead>
           <tr>
@@ -69,14 +73,12 @@
       </table>
     </div>
 
-    <div class="tarifs-note" appReveal [revealDelay]="250">
+    <div class="tarifs-note" appReveal [revealDelay]="250" *ngIf="tarifsNote">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
         <circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/>
         <line x1="12" y1="16" x2="12.01" y2="16"/>
       </svg>
-      <p>
-        Une plus-value de <strong>20 €</strong> est demandée pour les non résidents à Courbevoie.
-      </p>
+      <p [innerHTML]="tarifsNote"></p>
     </div>
   </div>
 </section>
