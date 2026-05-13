@@ -28,9 +28,7 @@ import { ApiService } from '../../../services/api.service';
 
         <div class="article-content">
           <p class="article-extrait" *ngIf="actu.extrait">{{ actu.extrait }}</p>
-          <div class="article-body" *ngIf="actu.contenu">
-            <p *ngFor="let paragraph of getContentParagraphs()">{{ paragraph }}</p>
-          </div>
+          <div class="article-body" *ngIf="actu.contenu" [innerHTML]="formatContent(actu.contenu)"></div>
           <p class="article-body" *ngIf="!actu.contenu && !actu.extrait">
             Aucun contenu disponible pour cette actualité.
           </p>
@@ -91,6 +89,22 @@ import { ApiService } from '../../../services/api.service';
       font-size: 16px; line-height: 1.9; color: var(--gray-300); margin-bottom: 20px;
     }
 
+    .article-body {
+      ::ng-deep {
+        p {
+          font-size: 16px;
+          line-height: 1.9;
+          color: var(--gray-300);
+          margin-bottom: 20px;
+        }
+        a {
+          color: var(--gold);
+          text-decoration: underline;
+          &:hover { color: var(--gold-light); }
+        }
+      }
+    }
+
     .loading {
       min-height: 60vh; display: flex; align-items: center; justify-content: center;
       p { color: var(--gray-400); }
@@ -121,5 +135,14 @@ export class ActualiteDetailPage implements OnInit {
   getContentParagraphs(): string[] {
     if (!this.actu?.contenu) return [];
     return this.actu.contenu.split('\n').filter((p: string) => p.trim());
+  }
+
+  formatContent(content: string): string {
+    if (!content) return '';
+    // Convertir les URLs en liens cliquables
+    const urlRegex = /(https?:\/\/[^\s<]+)/g;
+    const withLinks = content.replace(urlRegex, '<a href="$1" target="_blank" rel="noopener noreferrer">$1</a>');
+    // Convertir les sauts de ligne en paragraphes
+    return withLinks.split('\n').filter(p => p.trim()).map(p => `<p>${p}</p>`).join('');
   }
 }
