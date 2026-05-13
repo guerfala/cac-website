@@ -14,8 +14,6 @@
       class="actu-card"
       *ngFor="let actu of actualites; let i = index; let first = first"
       [class.actu-card--featured]="first"
-      appReveal
-      [revealDelay]="i * 100"
     >
       <div class="actu-card-image">
         <img [src]="api.img(actu.image)" [alt]="actu.titre" loading="lazy" />
@@ -25,13 +23,17 @@
         <span class="actu-card-date">{{ actu.date }}</span>
         <h3 class="actu-card-title">{{ actu.titre }}</h3>
         <p class="actu-card-extrait">{{ actu.extrait }}</p>
-        <span class="actu-card-link">
+        <a [routerLink]="['/infos-pratiques/actualites', actu.id]" class="actu-card-link">
           Lire la suite
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
             <path d="M5 12h14M12 5l7 7-7 7"/>
           </svg>
-        </span>
+        </a>
       </div>
     </div>
+
+    <p *ngIf="actualites.length === 0" style="text-align:center;color:var(--gray-400);padding:60px;">
+      Aucune actualité publiée pour le moment.
+    </p>
   </div>
 </section>
