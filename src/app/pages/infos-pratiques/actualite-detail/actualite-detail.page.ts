@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ActivatedRoute, RouterLink } from '@angular/router';
 import { ApiService } from '../../../services/api.service';
+import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-actualite-detail',
@@ -113,6 +114,7 @@ export class ActualiteDetailPage implements OnInit {
   constructor(
     private route: ActivatedRoute,
     public api: ApiService,
+    private sanitizer: DomSanitizer,
   ) {}
 
   ngOnInit(): void {
@@ -133,12 +135,11 @@ export class ActualiteDetailPage implements OnInit {
     return this.actu.contenu.split('\n').filter((p: string) => p.trim());
   }
 
-  formatContent(content: string): string {
+  formatContent(content: string): SafeHtml {
     if (!content) return '';
-    // Convertir les URLs en liens cliquables
     const urlRegex = /(https?:\/\/[^\s<]+)/g;
-    const withLinks = content.replace(urlRegex, '<a href="$1" target="_blank" rel="noopener noreferrer">$1</a>');
-    // Convertir les sauts de ligne en paragraphes
-    return withLinks.split('\n').filter(p => p.trim()).map(p => `<p>${p}</p>`).join('');
+    const withLinks = content.replace(urlRegex, '<a href="$1" target="_blank" rel="noopener noreferrer" style="color:#efb01f;text-decoration:underline;">$1</a>');
+    const html = withLinks.split('\n').filter(p => p.trim()).map(p => `<p>${p}</p>`).join('');
+    return this.sanitizer.bypassSecurityTrustHtml(html);
   }
 }
