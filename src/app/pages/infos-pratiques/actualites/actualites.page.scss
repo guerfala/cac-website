@@ -20,7 +20,7 @@
 .page-hero-bg {
   position: absolute; inset: 0;
   background: linear-gradient(180deg, rgba(10,10,10,0.5) 0%, rgba(10,10,10,0.85) 100%),
-    url('https://images.unsplash.com/photo-1552674605-db6ffd4facb5?w=1920&q=80') center/cover no-repeat;
+    url('/dirigeants.jpg') center 0%/cover no-repeat;
 }
 .actus-section { padding: 100px 48px 120px; background: var(--black); border-top: 1px solid rgba(239,176,31,0.08); }
 .actu-card,
