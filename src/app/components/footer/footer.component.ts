@@ -23,7 +23,7 @@ export class FooterComponent {
 
   liens = [
     { label: 'Comité 92 Athlétisme', url: 'https://cda92.athle.fr/accueil.aspx' },
-    { label: 'Ligue IDF Athlétisme', url: 'https://lifa.athle.fr/accueil.aspx' },
+    { label: 'Ligue IDF Athlétisme', url: 'https://www.lifa-athle.fr' },
     { label: 'FFA', url: 'https://www.athle.fr' },
   ];
 
