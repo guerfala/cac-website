@@ -166,7 +166,33 @@
 }
 .dropdown-link:hover .external-icon { color: var(--gold); }
 
-// ─── CONTACT ───
+.nav-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-left: 16px;
+}
+
+.nav-inscription {
+  text-decoration: none;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--gold);
+  background: transparent;
+  border: 1px solid var(--gold);
+  padding: 12px 28px;
+  border-radius: 4px;
+  transition: all 0.3s ease;
+
+  &:hover {
+    background: var(--gold);
+    color: var(--black);
+    transform: translateY(-1px);
+  }
+}
+
 .nav-contact {
   text-decoration: none;
   font-size: 12px;
@@ -177,7 +203,6 @@
   background: var(--red);
   padding: 12px 28px;
   border-radius: 4px;
-  margin-left: 16px;
   transition: all 0.3s ease;
 
   &:hover {
@@ -243,6 +268,6 @@
     transition: max-height 0.3s ease;
     &.open { max-height: 400px; padding: 8px 0 8px 12px; transform: none; }
   }
-  .nav-contact { display: none; }
+  .nav-actions { display: none; }
   .nav-burger { display: flex; }
 }

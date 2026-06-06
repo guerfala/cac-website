@@ -1,6 +1,6 @@
 <nav class="navbar" [class.scrolled]="isScrolled">
   <a routerLink="/" class="nav-logo" (click)="closeAll()">
-    <img src="logo.png" alt="CAC Logo" class="nav-logo-img" />
+    <img src="/logo-cac.png" alt="CAC Logo" class="nav-logo-img" />
   </a>
 
   <div class="nav-links" [class.open]="isMobileMenuOpen">
@@ -50,7 +50,10 @@
     </ng-container>
   </div>
 
-  <a routerLink="/contact" class="nav-contact" (click)="closeAll()">Contact</a>
+  <div class="nav-actions">
+    <a [href]="boutiqueUrl" target="_blank" rel="noopener noreferrer" class="nav-inscription" (click)="closeAll()">Boutique</a>
+    <a routerLink="/contact" class="nav-contact" (click)="closeAll()">Contact</a>
+  </div>
 
   <div class="nav-burger" (click)="toggleMobileMenu()">
     <span [class.open]="isMobileMenuOpen"></span>

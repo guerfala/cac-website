@@ -1,4 +1,4 @@
-<section class="partenaires">
+<section class="partenaires" *ngIf="partenaires.length > 0">
   <div class="partenaires-header" appReveal>
     <p class="section-label">Ils nous soutiennent</p>
     <h2 class="section-title">Nos Partenaires</h2>
@@ -9,20 +9,28 @@
     <div class="carousel-fade carousel-fade--right"></div>
 
     <div class="carousel-track">
-      <!-- Premier jeu de logos -->
-      <div class="carousel-slide" *ngFor="let p of partenaires">
+      <!-- Premier jeu -->
+      <a *ngFor="let p of partenaires"
+         class="carousel-slide"
+         [href]="p.url || '#'"
+         [target]="p.url ? '_blank' : '_self'"
+         rel="noopener noreferrer">
         <div class="logo-card">
-          <img [src]="p.logo" [alt]="p.nom" />
+          <img [src]="api.img(p.logo)" [alt]="p.nom" />
           <span class="logo-name">{{ p.nom }}</span>
         </div>
-      </div>
+      </a>
       <!-- Duplication pour boucle infinie -->
-      <div class="carousel-slide" *ngFor="let p of partenaires">
+      <a *ngFor="let p of partenaires"
+         class="carousel-slide"
+         [href]="p.url || '#'"
+         [target]="p.url ? '_blank' : '_self'"
+         rel="noopener noreferrer">
         <div class="logo-card">
-          <img [src]="p.logo" [alt]="p.nom" />
+          <img [src]="api.img(p.logo)" [alt]="p.nom" />
           <span class="logo-name">{{ p.nom }}</span>
         </div>
-      </div>
+      </a>
     </div>
   </div>
 </section>

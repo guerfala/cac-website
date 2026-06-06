@@ -6,6 +6,7 @@ import { ActualitesPage } from './pages/infos-pratiques/actualites/actualites.pa
 import { ActualiteDetailPage } from './pages/infos-pratiques/actualite-detail/actualite-detail.page';
 import { HorairesTarifsPage } from './pages/infos-pratiques/horaires-tarifs/horaires-tarifs.page';
 import { CongesScolairesPage } from './pages/infos-pratiques/conges-scolaires/conges-scolaires.page';
+import { PartenairesPage } from './pages/infos-pratiques/partenaires/partenaires.page';
 import { AlbumsPhotosPage } from './pages/resultats-medias/albums-photos/albums-photos.page';
 import { ContactPage } from './pages/contact/contact.page';
 
@@ -17,6 +18,7 @@ export const routes: Routes = [
   { path: 'infos-pratiques/actualites/:id', component: ActualiteDetailPage },
   { path: 'infos-pratiques/horaires-tarifs', component: HorairesTarifsPage },
   { path: 'infos-pratiques/conges-scolaires', component: CongesScolairesPage },
+  { path: 'infos-pratiques/partenaires', component: PartenairesPage },
   { path: 'resultats-medias/albums-photos', component: AlbumsPhotosPage },
   { path: 'contact', component: ContactPage },
   { path: '**', redirectTo: '' },

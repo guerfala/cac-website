@@ -37,6 +37,9 @@ export class ApiService {
   // ─── Dashboard Stats ───
   getStats(): Observable<any> { return this.http.get<any>(`${this.base}/dashboard/stats`); }
 
+  // ─── Partenaires ───
+  getPartenaires(): Observable<any[]> { return this.http.get<any[]>(`${this.base}/partenaires`); }
+
   // ─── Image URL helper ───
   img(path: string | null): string {
     if (!path) return '';

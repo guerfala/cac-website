@@ -26,6 +26,8 @@ export class NavbarComponent {
   isMobileMenuOpen = false;
   openDropdown: string | null = null;
 
+  boutiqueUrl = 'https://springart.cc/en/collections/courbevoie-athletisme';
+
   navLinks: NavLink[] = [
     { label: 'Accueil', route: '/' },
     {
@@ -41,6 +43,7 @@ export class NavbarComponent {
         { label: 'Actualités', route: '/infos-pratiques/actualites' },
         { label: 'Horaires et tarifs', route: '/infos-pratiques/horaires-tarifs' },
         { label: 'Congés scolaires', route: '/infos-pratiques/conges-scolaires' },
+        { label: 'Partenaires', route: '/infos-pratiques/partenaires' },
       ],
     },
     {
@@ -57,7 +60,7 @@ export class NavbarComponent {
       label: 'Liens',
       children: [
         { label: 'Comité des Hauts-de-Seine d\'Athlétisme', externalUrl: 'https://cda92.athle.fr/accueil.aspx' },
-        { label: 'Ligue d\'Île-de-France d\'athlétisme', externalUrl: 'https://www.lifa-athle.fr' },
+        { label: 'Ligue d\'Île-de-France d\'athlétisme', externalUrl: 'https://lifa.athle.fr/accueil.aspx' },
         { label: 'Fédération Française d\'Athlétisme', externalUrl: 'https://www.athle.fr' },
       ],
     },
@@ -88,8 +91,6 @@ export class NavbarComponent {
 
   toggleMobileMenu(): void {
     this.isMobileMenuOpen = !this.isMobileMenuOpen;
-    if (!this.isMobileMenuOpen) {
-      this.openDropdown = null;
-    }
+    if (!this.isMobileMenuOpen) this.openDropdown = null;
   }
 }
