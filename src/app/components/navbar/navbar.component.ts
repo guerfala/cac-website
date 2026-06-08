@@ -60,7 +60,7 @@ export class NavbarComponent {
       label: 'Liens',
       children: [
         { label: 'Comité des Hauts-de-Seine d\'Athlétisme', externalUrl: 'https://cda92.athle.fr/accueil.aspx' },
-        { label: 'Ligue d\'Île-de-France d\'athlétisme', externalUrl: 'https://lifa.athle.fr/accueil.aspx' },
+        { label: 'Ligue d\'Île-de-France d\'athlétisme', externalUrl: 'https://www.lifa-athle.fr/' },
         { label: 'Fédération Française d\'Athlétisme', externalUrl: 'https://www.athle.fr' },
       ],
     },
